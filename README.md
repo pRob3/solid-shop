@@ -35,4 +35,4 @@ You can deploy the `dist` folder to any static host provider (netlify, surge, no
 
 ## How the app looks like
 
-![App Screenshot](./public/screenshot.png)
+![App Screenshot](./screenshot.png)
