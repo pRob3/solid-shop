@@ -1,3 +1,12 @@
+## SolidJS tailwind shop/eCommerce template
+
+This is a template for a shop/eCommerce website using SolidJS and TailwindCSS.
+We are using local storage to store the JWT tokens.
+
+## How the app looks like
+
+![App Screenshot](./screenshot.png)
+
 ## Usage
 
 Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
@@ -32,7 +41,3 @@ Your app is ready to be deployed!
 ## Deployment
 
 You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
-
-## How the app looks like
-
-![App Screenshot](./screenshot.png)
