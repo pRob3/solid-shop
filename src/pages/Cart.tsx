@@ -19,12 +19,14 @@ export default function Cart() {
               <div>
                 <span class='font-bold'>{item.title}</span> x {item.quantity}
               </div>
-              <div>${item.price * item.quantity}</div>
+              <div>
+                ${(item.price * item.quantity).toFixed(2).toLocaleString()}
+              </div>
             </div>
           )}
         </For>
         <p class='mt-8 pt-4 border-t-2 font-bold'>
-          Total cart price - ${total()}
+          Total cart price - ${total().toFixed(2).toLocaleString()}
         </p>
       </Card>
     </div>
