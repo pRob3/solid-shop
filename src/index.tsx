@@ -39,7 +39,7 @@ render(
   () => (
     <UserProvider>
       <CartProvider>
-        <Router root={App}>
+        <Router base='/solid-shop' root={App}>
           <Route path='/' component={Home} />
 
           <Route path='/login' component={LoginPage} />
