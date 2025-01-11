@@ -2,6 +2,7 @@ import { createResource, createSignal, Show } from 'solid-js';
 import { useParams } from '@solidjs/router';
 import { useCartContext } from '../context/CartContext';
 import { fetchProductById, type Product } from '../services/productService';
+import StockStatus from '../components/StockStatus';
 
 export default function ProductPage() {
   const params = useParams();
@@ -115,21 +116,7 @@ export default function ProductPage() {
 
                 {/* Stock & Shipping Info */}
                 <div class='text-sm text-gray-600'>
-                  <p class='flex items-center gap-1'>
-                    {productData.stock >= 5 ? (
-                      <>
-                        <span class='text-green-500'>●</span> in stock
-                      </>
-                    ) : productData.stock > 0 ? (
-                      <>
-                        <span class='text-yellow-500'>●</span> Few in stock
-                      </>
-                    ) : (
-                      <>
-                        <span class='text-red-500'>●</span> Out of stock
-                      </>
-                    )}
-                  </p>
+                  <StockStatus stock={productData.stock} />
                   <p class='font-semibold mt-3'>
                     Delivery:{' '}
                     <span class='text-blue-500'>

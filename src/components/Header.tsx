@@ -13,8 +13,8 @@ export default function Header() {
     <header class='bg-white shadow-md dark:bg-gray-900 dark:text-white'>
       <div class='container grid gap-1 md:grid-cols-2 lg:grid-cols-4'>
         {/* Logo and Mobile Menu Button */}
-        <div class='order-1 col-span-1 lg:col-span-1 lg:order-1'>
-          <div class='container mx-auto px-4 py-2 flex items-center justify-between'>
+        <div class='order-1 col-span-1 lg:col-span-1 lg:order-1 flex items-center gap-1 justify-start'>
+          <div class='px-4 py-2 flex items-center justify-between'>
             <div class='flex items-center gap-4'>
               {/* Hamburger Menu */}
               <button
@@ -106,7 +106,7 @@ export default function Header() {
                 />
                 <button
                   type='button'
-                  class='absolute inset-y-0 right-2 flex items-center text-green-500'
+                  class='absolute inset-y-0 right-2 flex items-center text-pink-500'
                   aria-label='Search'
                 >
                   <span class='material-symbols-outlined'>search</span>
