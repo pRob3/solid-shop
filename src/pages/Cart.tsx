@@ -1,5 +1,5 @@
 import { For } from 'solid-js';
-import Card from '../components/ProductCard';
+import Card from '../components/Card';
 import { useCartContext } from '../context/CartContext';
 
 export default function Cart() {
