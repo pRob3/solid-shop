@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Vintage 1980s T-Shirt",
+      "price": 19.99,
+      "description": "A classic 1980s t-shirt with a vintage look and feel.",
+      "image": "https://picsum.photos/seed/123/400/500"
+    },
+    {
+      "id": "2",
+      "title": "Vintage 1980s Sweatshirt",
+      "price": 29.99,
+      "description": "A classic 1980s sweatshirt with a vintage look and feel.",
+      "image": "https://picsum.photos/seed/431/400/500"
+    },
+    {
+      "id": "3",
+      "title": "Vintage 1980s Jeans",
+      "price": 39.99,
+      "description": "Classic 1980s jeans with a vintage look and feel.",
+      "image": "https://picsum.photos/seed/323/400/500"
+    },
+    {
+      "id": "4",
+      "title": "Vintage 1980s Jacket",
+      "price": 49.99,
+      "description": "A classic 1980s jacket with a vintage look and feel.",
+      "image": "https://picsum.photos/seed/222/400/500"
+    },
+    {
+      "id": "5",
+      "title": "Vintage 1980s Hat",
+      "price": 19.99,
+      "description": "A classic 1980s hat with a vintage look and feel.",
+      "image": "https://picsum.photos/seed/1356/400/500"
+    },
+    {
+      "id": "6",
+      "title": "Samantha Fox Poster",
+      "price": 4.99,
+      "description": "Classic 1980s poster of Samantha Fox.",
+      "image": "https://picsum.photos/seed/337/400/500"
+    },
+    {
+      "id": "7",
+      "title": "Vintage 1980s Sunglasses",
+      "price": 9.99,
+      "description": "Classic 1980s sunglasses with a vintage look and feel.",
+      "image": "https://picsum.photos/seed/2121/400/500/"
+    },
+    {
+      "id": "8",
+      "title": "Vintage 1980s Watch",
+      "price": 24.99,
+      "description": "A classic 1980s watch with a vintage look and feel.",
+      "image": "https://picsum.photos/seed/5555/400/500/"
+    }
+  ]
+}
