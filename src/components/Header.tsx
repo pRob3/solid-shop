@@ -3,16 +3,19 @@ import { createSignal, Show } from 'solid-js';
 import { useCartContext } from '../context/CartContext';
 import { useUserContext } from '../context/UserContext';
 
-export default function Header() {
+interface HeaderProps {
+  setIsFocused: (value: boolean) => void; // Prop to update focus state in App
+}
+
+export default function Header(props: HeaderProps) {
   const { isLoggedIn, logout } = useUserContext();
-  const [isFocused, setIsFocused] = createSignal(false);
   const [menuOpen, setMenuOpen] = createSignal(false);
   const { items } = useCartContext();
   const quantity = () => items.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div class={`relative ${isFocused() ? 'focus-active' : ''}`}>
-      <header class='bg-white shadow-md dark:bg-gray-900 dark:text-white'>
+    <div>
+      <header class='bg-white shadow-md dark:bg-gray-900 dark:text-white relative z-20'>
         <div class='container grid gap-1 md:grid-cols-2 lg:grid-cols-4'>
           {/* Logo and Mobile Menu Button */}
           <div class='order-1 col-span-1 lg:col-span-1 lg:order-1 flex items-center gap-1 justify-start'>
@@ -103,10 +106,10 @@ export default function Header() {
                   <input
                     type='text'
                     placeholder='Search product'
-                    class='w-full p-2 pr-10 rounded-full border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500'
+                    class='w-full p-2 pr-10 rounded-full border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 relative z-50'
                     aria-label='Search'
-                    onFocus={() => setIsFocused(true)} // Set focus state
-                    onBlur={() => setIsFocused(false)} // Reset focus state
+                    onFocus={() => props.setIsFocused(true)} // Set focus state
+                    onBlur={() => props.setIsFocused(false)} // Reset focus state
                   />
                   <button
                     type='button'

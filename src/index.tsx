@@ -27,9 +27,19 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 }
 
 const App: ParentComponent = (props) => {
+  const [isFocused, setIsFocused] = createSignal(false);
+
   return (
     <div class='container m-auto'>
-      <Header />
+      {/* Dimmed Background */}
+      <div
+        class={`absolute inset-0 bg-black bg-opacity-50 ${
+          isFocused() ? 'block' : 'hidden'
+        } z-20`}
+      >
+        {' '}
+      </div>
+      <Header setIsFocused={setIsFocused} />
       {props.children}
     </div>
   );
