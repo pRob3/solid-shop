@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "type": "module",
+  "homepage": "https://prob3.github.io/solid-shop/",
   "scripts": {
     "start": "vite",
     "dev": "vite",
