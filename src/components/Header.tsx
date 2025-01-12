@@ -17,7 +17,7 @@ export default function Header(props: HeaderProps) {
   return (
     <div>
       <header class='bg-white shadow-md dark:bg-gray-900 dark:text-white relative'>
-        <div class='container grid gap-1 md:grid-cols-2 lg:grid-cols-4'>
+        <div class='container mx-auto grid gap-1 md:grid-cols-2 lg:grid-cols-4'>
           {/* Logo and Mobile Menu Button */}
           <div class='order-1 col-span-1 lg:col-span-1 lg:order-1 flex items-center gap-1 justify-start relative'>
             <div class='px-4 py-2 flex items-center justify-between'>
@@ -28,7 +28,7 @@ export default function Header(props: HeaderProps) {
                 {/* Logo */}
                 <A
                   href='/'
-                  class='flex items-center text-xl font-bold text-primary'
+                  class='items-center text-xl font-bold text-primary hidden md:block'
                 >
                   SolidShop
                 </A>
@@ -40,7 +40,7 @@ export default function Header(props: HeaderProps) {
           <div class='order-1 col-span-1 lg:col-span-1 lg:order-3 flex items-center gap-6 justify-end relative z-10'>
             <A
               href='/store-locator'
-              class='text-gray-600 dark:text-gray-300 flex items-center gap-1'
+              class='text-gray-600 dark:text-gray-300 items-center gap-1 hidden md:block'
             >
               <span class='material-symbols-outlined flex-shrink-0'>
                 location_on
