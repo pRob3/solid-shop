@@ -81,8 +81,16 @@ export default function Menu() {
         aria-label='Categories'
       >
         {/* Header */}
-        <div class='p-4 border-b border-gray-200'>
+        <div class='p-4 border-b border-gray-200 flex items-center justify-between'>
           <h2 class='text-xl font-semibold text-black'>Categories</h2>
+          <button
+            type='button'
+            class='text-gray-600 hover:text-gray-900 focus:outline-none transition'
+            onClick={toggleMenu}
+            aria-label='Close'
+          >
+            <span class='material-symbols-outlined text-lg'>close</span>
+          </button>
         </div>
 
         {/* Scrollable List */}
@@ -102,8 +110,7 @@ export default function Menu() {
                         }
                       }}
                     >
-                      {category.name}{' '}
-                      {/* Ensure only category.name is rendered */}
+                      {category.name}
                     </A>
                   </li>
                 )}
