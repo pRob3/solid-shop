@@ -17,6 +17,7 @@ import Register from './pages/auth/Register';
 import { UserProvider } from './context/UserContext';
 import { CartProvider } from './context/CartContext';
 import ProductPage from './pages/ProductPage';
+import Category from './pages/Category';
 
 const root = document.getElementById('root');
 
@@ -55,8 +56,10 @@ render(
           <Route path='/login' component={LoginPage} />
           <Route path='/register' component={Register} />
 
+          <Route path='/:category/:id' component={ProductPage} />
+          <Route path='/:category' component={Category} />
+
           <Route path='/cart' component={Cart} />
-          <Route path='/product/:id' component={ProductPage} />
 
           <Route
             path='/playground/eventHandlers'

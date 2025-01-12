@@ -3,6 +3,7 @@ import { useParams } from '@solidjs/router';
 import { useCartContext } from '../context/CartContext';
 import { fetchProductById, type Product } from '../services/productService';
 import StockStatus from '../components/StockStatus';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function ProductPage() {
   const params = useParams();
@@ -21,18 +22,14 @@ export default function ProductPage() {
 
     setAdding(true);
 
-    addToCart({
-      id: productData.id,
-      title: productData.title,
-      price: productData.price,
-      quantity: quantity(),
-    });
+    addToCart({ product: productData, quantity: quantity() });
 
     setTimeout(() => setAdding(false), 1000);
   };
 
   return (
     <div class='container mx-auto my-10 px-4 lg:px-0'>
+      <Breadcrumbs />
       <Show when={product()} fallback={<div>Loading...</div>} keyed>
         {(productData) => (
           <div class='grid lg:grid-cols-2 gap-10'>

@@ -2,7 +2,13 @@
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      scrollbar: {
+        thin: 'scrollbar-thin',
+        thumb: 'scrollbar-thumb-gray-400',
+        track: 'scrollbar-track-gray-100',
+      },
+    },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')],
 };

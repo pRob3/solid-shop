@@ -7,6 +7,10 @@ body {
   background-color: #ddd;
 }
 
+/* Menu start */
+
+/* Menu end */
+
 .btn {
   @apply px-6
   py-2

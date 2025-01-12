@@ -2,6 +2,7 @@ import { A } from '@solidjs/router';
 import { createSignal, Show } from 'solid-js';
 import { useCartContext } from '../context/CartContext';
 import { useUserContext } from '../context/UserContext';
+import HamburgerMenu from './HamburgerMenu';
 
 interface HeaderProps {
   setIsFocused: (value: boolean) => void; // Prop to update focus state in App
@@ -9,7 +10,6 @@ interface HeaderProps {
 
 export default function Header(props: HeaderProps) {
   const { isLoggedIn, logout } = useUserContext();
-  const [menuOpen, setMenuOpen] = createSignal(false);
   const { items } = useCartContext();
   const quantity = () => items.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -22,14 +22,7 @@ export default function Header(props: HeaderProps) {
             <div class='px-4 py-2 flex items-center justify-between'>
               <div class='flex items-center gap-4'>
                 {/* Hamburger Menu */}
-                <button
-                  type='button'
-                  class='text-2xl flex items-center lg:order-last'
-                  onClick={() => setMenuOpen(!menuOpen())}
-                >
-                  <span class='material-symbols-outlined'>menu</span>
-                  <span class='hidden lg:inline ml-2'>Menu</span>
-                </button>
+                <HamburgerMenu />
 
                 {/* Logo */}
                 <A

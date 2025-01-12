@@ -22,7 +22,7 @@ export default function ProductCard({ product, showBuyNow }: ProductCardProps) {
 
       {/* Product Image Container */}
       <div class='relative'>
-        <A href={`/product/${product.id}`}>
+        <A href={`/${product.category}/${product.id}`}>
           <img
             src={product.images[0]}
             alt={product.title}
@@ -54,7 +54,7 @@ export default function ProductCard({ product, showBuyNow }: ProductCardProps) {
           <button
             type='button'
             class='p-2 bg-pink-500 text-white text-sm font-bold uppercase rounded hover:bg-pink-600 transition'
-            onClick={() => addToCart(product)}
+            onClick={() => addToCart({ product, quantity: 1 })}
           >
             Buy
           </button>

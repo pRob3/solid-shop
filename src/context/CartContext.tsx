@@ -14,9 +14,14 @@ export interface CartItem {
   quantity: number;
 }
 
+interface AddToCart {
+  product: Product;
+  quantity: number;
+}
+
 interface CartContextType {
   items: CartItem[];
-  addToCart: (product: Product) => void;
+  addToCart: (addToCart: AddToCart) => void;
   updateCartItem: (id: number, quantity: number) => void;
   removeFromCart: (id: number) => void;
 }
@@ -26,28 +31,30 @@ const CartContext = createContext<CartContextType>();
 export function CartProvider(props: { children: JSX.Element }) {
   const [items, setItems] = createStore<CartItem[]>([]);
 
-  const addToCart = (product: Product) => {
-    const existingItem = items.find((i) => i.id === product.id);
+  const addToCart = (addToCart: AddToCart) => {
+    const existingItem = items.find((i) => i.id === addToCart.product.id);
     if (existingItem) {
       setItems((prevItems) =>
         prevItems.map((i) =>
-          i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
+          i.id === addToCart.product.id ? { ...i, quantity: i.quantity + 1 } : i
         )
       );
     } else {
       setItems([
         ...items,
         {
-          id: product.id,
-          title: product.title,
-          brand: product.brand,
-          price: product.price,
+          id: addToCart.product.id,
+          title: addToCart.product.title,
+          brand: addToCart.product.brand,
+          price: addToCart.product.price,
           originalPrice:
-            product.price + (product.price * product.discountPercentage) / 100,
-          discountPercentage: product.discountPercentage,
-          stock: product.stock,
-          image: product.images[0],
-          quantity: 1,
+            addToCart.product.price +
+            (addToCart.product.price * addToCart.product.discountPercentage) /
+              100,
+          discountPercentage: addToCart.product.discountPercentage,
+          stock: addToCart.product.stock,
+          image: addToCart.product.images[0],
+          quantity: addToCart.quantity,
         },
       ]);
     }
