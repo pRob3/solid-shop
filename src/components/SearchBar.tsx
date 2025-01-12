@@ -1,13 +1,33 @@
 import { createSignal } from 'solid-js';
+import toast from 'solid-toast';
 
 interface SearchBarProps {
   setIsFocused: (value: boolean) => void; // Prop to update focus state in App
+}
+
+const messages = [
+  'Wow much search! 🚀',
+  'Searching for treasures! 🏴‍☠️',
+  'Finding the best deals! 💸',
+  'Hold on, magic is happening! ✨',
+  'Your wish is our command! 🧞‍♂️',
+  'Uncovering hidden gems! 💎',
+  'Shopping spree initiated! 🛍️',
+  'Hang tight, deals are coming! ⏳',
+  'Your search is our mission! 🚀',
+  'Bringing the best to you! 🎁',
+];
+
+function getRandomMessage() {
+  return messages[Math.floor(Math.random() * messages.length)];
 }
 
 export default function SearchBar(props: SearchBarProps) {
   const [searchValue, setSearchValue] = createSignal('');
 
   const handleSearchClick = () => {
+    toast.success(getRandomMessage());
+
     if (searchValue().trim() !== '') {
       console.log('Searching for:', searchValue()); // Perform your search logic here
     }

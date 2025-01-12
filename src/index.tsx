@@ -18,6 +18,7 @@ import { UserProvider } from './context/UserContext';
 import { CartProvider } from './context/CartContext';
 import ProductPage from './pages/ProductPage';
 import Category from './pages/Category';
+import { Toaster } from 'solid-toast';
 
 const root = document.getElementById('root');
 
@@ -31,17 +32,23 @@ const App: ParentComponent = (props) => {
   const [isFocused, setIsFocused] = createSignal(false);
 
   return (
-    <div class='container m-auto'>
+    <div class='relative'>
+      <Toaster position='bottom-right' gutter={8} />
+
       {/* Dimmed Background */}
       <div
-        class={`absolute inset-0 bg-black bg-opacity-50 ${
+        class={`absolute inset-0 bg-black bg-opacity-20 ${
           isFocused() ? 'block' : 'hidden'
         } z-20`}
-      >
-        {' '}
+      />
+
+      {/* Header */}
+      <div class='relative'>
+        <Header setIsFocused={setIsFocused} />
       </div>
-      <Header setIsFocused={setIsFocused} />
-      {props.children}
+
+      {/* Main Content */}
+      <div class='relative z-0'>{props.children}</div>
     </div>
   );
 };

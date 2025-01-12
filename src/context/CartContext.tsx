@@ -1,6 +1,7 @@
 import { createContext, useContext, type JSX } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import type { Product } from '../services/productService';
+import toast from 'solid-toast';
 
 export interface CartItem {
   id: number;
@@ -34,12 +35,32 @@ export function CartProvider(props: { children: JSX.Element }) {
   const addToCart = (addToCart: AddToCart) => {
     const existingItem = items.find((i) => i.id === addToCart.product.id);
     if (existingItem) {
+      if (existingItem.quantity + addToCart.quantity > existingItem.stock) {
+        toast.error(
+          `Not enough stock, only ${
+            existingItem.stock - existingItem.quantity
+          } available`
+        );
+
+        return;
+      }
       setItems((prevItems) =>
         prevItems.map((i) =>
-          i.id === addToCart.product.id ? { ...i, quantity: i.quantity + 1 } : i
+          i.id === addToCart.product.id
+            ? { ...i, quantity: i.quantity + addToCart.quantity }
+            : i
         )
       );
+
+      toast.success(`Updated cart with ${addToCart.quantity} more items`);
     } else {
+      if (addToCart.quantity > addToCart.product.stock) {
+        toast.error(
+          `Not enough stock, only ${addToCart.product.stock} available`
+        );
+        return;
+      }
+
       setItems([
         ...items,
         {
@@ -57,6 +78,7 @@ export function CartProvider(props: { children: JSX.Element }) {
           quantity: addToCart.quantity,
         },
       ]);
+      toast.success(`Added ${addToCart.quantity} x ${addToCart.product.title}`);
     }
   };
 
@@ -68,6 +90,7 @@ export function CartProvider(props: { children: JSX.Element }) {
 
   const removeFromCart = (id: number) => {
     setItems((prevItems) => prevItems.filter((i) => i.id !== id));
+    toast.success('Item removed from cart');
   };
 
   return (
