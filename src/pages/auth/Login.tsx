@@ -8,7 +8,7 @@ import {
 import type { ValidationErrors } from '../../types/api';
 import FormInput from '../../components/FormInput';
 import { handleApiErrors } from '../../utils/handleApiErrors';
-import { useNavigate } from '@solidjs/router';
+import { A, useNavigate } from '@solidjs/router';
 import { createFieldHandler } from '../../utils/formHelpers';
 import { useUserContext } from '../../context/UserContext';
 
@@ -103,9 +103,9 @@ const LoginForm = () => {
       </button>
       <p class='text-center mt-4'>
         Don't have an account?{' '}
-        <a href='/register' class='text-blue-500'>
+        <A href='/register' class='text-blue-500'>
           Register
-        </a>
+        </A>
       </p>
     </form>
   );
