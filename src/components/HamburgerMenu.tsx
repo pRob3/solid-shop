@@ -25,7 +25,7 @@ export default function Menu() {
       {/* Hamburger / Close Button */}
       <button
         type='button'
-        class='relative z-30 flex items-center justify-center w-10 h-10 rounded focus:outline-none bg-white hover:bg-gray-100 transition'
+        class='relative z-10 flex items-center justify-center w-10 h-10 rounded focus:outline-none bg-white hover:bg-gray-100 transition'
         onClick={toggleMenu}
         onKeyUp={handleKeyUp}
         aria-label={menuOpen() ? 'Close menu' : 'Open menu'}
@@ -74,7 +74,7 @@ export default function Menu() {
       {/* Menu Panel */}
       <dialog
         open={menuOpen()}
-        class={`fixed top-0 left-0 w-80 max-w-full bg-white shadow-lg h-full z-30 transform transition-transform duration-500 ease-in-out ${
+        class={`fixed z-40 top-0 left-0 w-80 max-w-full bg-white shadow-lg h-full transform transition-transform duration-500 ease-in-out ${
           menuOpen() ? 'translate-x-0' : '-translate-x-full'
         }`}
         style='margin: 0; padding: 0; border: none;' // Reset default dialog styles

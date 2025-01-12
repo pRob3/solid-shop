@@ -1,8 +1,9 @@
 import { A } from '@solidjs/router';
-import { createSignal, Show } from 'solid-js';
+import { Show } from 'solid-js';
 import { useCartContext } from '../context/CartContext';
 import { useUserContext } from '../context/UserContext';
 import HamburgerMenu from './HamburgerMenu';
+import SearchBar from './SearchBar';
 
 interface HeaderProps {
   setIsFocused: (value: boolean) => void; // Prop to update focus state in App
@@ -15,10 +16,10 @@ export default function Header(props: HeaderProps) {
 
   return (
     <div>
-      <header class='bg-white shadow-md dark:bg-gray-900 dark:text-white relative z-20'>
+      <header class='bg-white shadow-md dark:bg-gray-900 dark:text-white relative'>
         <div class='container grid gap-1 md:grid-cols-2 lg:grid-cols-4'>
           {/* Logo and Mobile Menu Button */}
-          <div class='order-1 col-span-1 lg:col-span-1 lg:order-1 flex items-center gap-1 justify-start'>
+          <div class='order-1 col-span-1 lg:col-span-1 lg:order-1 flex items-center gap-1 justify-start relative'>
             <div class='px-4 py-2 flex items-center justify-between'>
               <div class='flex items-center gap-4'>
                 {/* Hamburger Menu */}
@@ -36,7 +37,7 @@ export default function Header(props: HeaderProps) {
           </div>
 
           {/* Actions (Cart, Login/Logout) */}
-          <div class='order-1 col-span-1 lg:col-span-1 lg:order-3 flex items-center gap-6 justify-end'>
+          <div class='order-1 col-span-1 lg:col-span-1 lg:order-3 flex items-center gap-6 justify-end relative z-10'>
             <A
               href='/store-locator'
               class='text-gray-600 dark:text-gray-300 flex items-center gap-1'
@@ -91,28 +92,10 @@ export default function Header(props: HeaderProps) {
           </div>
 
           {/* Search Bar */}
-          <div class='order-3 col-span-2 lg:order-2 lg:col-span-2'>
-            <div class='block lg:block bg-gray-100 dark:bg-gray-800 py-2'>
-              <div class='container mx-auto px-4 flex flex-col lg:flex-row gap-2 lg:gap-0 items-center'>
-                {/* Search Input with Button */}
-                <div class='relative w-full lg:w-3/4'>
-                  <input
-                    type='text'
-                    placeholder='Search product'
-                    class='w-full p-2 pr-10 rounded-full border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 relative z-50'
-                    aria-label='Search'
-                    onFocus={() => props.setIsFocused(true)} // Set focus state
-                    onBlur={() => props.setIsFocused(false)} // Reset focus state
-                  />
-                  <button
-                    type='button'
-                    class='absolute inset-y-0 right-2 flex items-center text-pink-500'
-                    aria-label='Search'
-                  >
-                    <span class='material-symbols-outlined'>search</span>
-                  </button>
-                </div>
-              </div>
+
+          <div class='order-3 col-span-2 lg:order-2 lg:col-span-2 relative z-30'>
+            <div class='bg-gray-100 dark:bg-gray-800 py-2 flex items-center justify-center'>
+              <SearchBar setIsFocused={props.setIsFocused} />
             </div>
           </div>
         </div>
