@@ -1,16 +1,22 @@
 import { createContext, useContext, type JSX } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import type { Product } from '../services/productService';
 
 export interface CartItem {
   id: number;
   title: string;
+  brand: string;
   price: number;
+  originalPrice: number;
+  discountPercentage: number;
+  stock: number;
+  image: string;
   quantity: number;
 }
 
 interface CartContextType {
   items: CartItem[];
-  addToCart: (item: CartItem) => void;
+  addToCart: (product: Product) => void;
   updateCartItem: (id: number, quantity: number) => void;
   removeFromCart: (id: number) => void;
 }
@@ -20,16 +26,30 @@ const CartContext = createContext<CartContextType>();
 export function CartProvider(props: { children: JSX.Element }) {
   const [items, setItems] = createStore<CartItem[]>([]);
 
-  const addToCart = (item: CartItem) => {
-    const existingItem = items.find((i) => i.id === item.id);
+  const addToCart = (product: Product) => {
+    const existingItem = items.find((i) => i.id === product.id);
     if (existingItem) {
       setItems((prevItems) =>
         prevItems.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+          i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
         )
       );
     } else {
-      setItems([...items, item]);
+      setItems([
+        ...items,
+        {
+          id: product.id,
+          title: product.title,
+          brand: product.brand,
+          price: product.price,
+          originalPrice:
+            product.price + (product.price * product.discountPercentage) / 100,
+          discountPercentage: product.discountPercentage,
+          stock: product.stock,
+          image: product.images[0],
+          quantity: 1,
+        },
+      ]);
     }
   };
 

@@ -2,34 +2,23 @@ interface StockStatusProps {
   stock: number;
 }
 
-export default function StockStatus(props: StockStatusProps) {
-  const getStatusText = () => {
+export default function StockStatus(props: { stock: number }) {
+  const getStatus = () => {
     if (props.stock > 0) {
-      return props.stock < 5 ? 'Low stock' : 'In stock';
+      return props.stock < 5
+        ? { text: 'Low stock', color: 'text-yellow-500', icon: 'warning' }
+        : { text: 'In stock', color: 'text-green-500', icon: 'check_circle' };
     }
-    return 'Out of stock';
+
+    return { text: 'Out of stock', color: 'text-red-500', icon: 'cancel' };
   };
 
-  const getStatusColor = () => {
-    if (props.stock > 0) {
-      return props.stock < 5 ? 'text-yellow-500' : 'text-green-500';
-    }
-    return 'text-red-500';
-  };
-
-  const getStatusIcon = () => {
-    if (props.stock > 0) {
-      return props.stock < 5 ? 'warning' : 'check_circle';
-    }
-    return 'cancel';
-  };
+  const status = getStatus();
 
   return (
-    <p
-      class={`text-xs font-medium ${getStatusColor()} flex items-center justify-center gap-1`}
-    >
-      <span class='material-symbols-outlined text-sm'>{getStatusIcon()}</span>
-      {getStatusText()}
+    <p class={`text-sm flex items-center gap-1 ${status.color}`}>
+      <span class='material-symbols-outlined'>{status.icon}</span>
+      {status.text}
     </p>
   );
 }
