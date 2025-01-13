@@ -82,7 +82,7 @@ export default function Menu() {
       >
         {/* Header */}
         <div class='p-4 border-b border-gray-200 flex items-center justify-between'>
-          <h2 class='text-xl font-semibold text-black'>Categories</h2>
+          <h2 class='logo-style'>Categories</h2>
           <button
             type='button'
             class='text-gray-600 hover:text-gray-900 focus:outline-none transition'
@@ -95,7 +95,10 @@ export default function Menu() {
 
         {/* Scrollable List */}
         <div class='overflow-y-auto h-full p-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100'>
-          <Show when={categories()} fallback={<p>Loading categories...</p>}>
+          <Show
+            when={categories()}
+            fallback={<p class='logo-style'>Loading categories...</p>}
+          >
             <ul>
               <For each={categories()}>
                 {(category) => (

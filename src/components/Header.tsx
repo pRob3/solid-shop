@@ -26,10 +26,7 @@ export default function Header(props: HeaderProps) {
                 <HamburgerMenu />
 
                 {/* Logo */}
-                <A
-                  href='/'
-                  class='items-center text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'
-                >
+                <A href='/' class='items-center logo-style'>
                   SolidShop
                 </A>
               </div>
