@@ -37,7 +37,7 @@ const App: ParentComponent = (props) => {
 
       {/* Dimmed Background */}
       <div
-        class={`absolute inset-0 bg-black bg-opacity-20 ${
+        class={`absolute inset-0 bg-black bg-opacity-40 ${
           isFocused() ? 'block' : 'hidden'
         } z-20`}
       />
@@ -48,7 +48,7 @@ const App: ParentComponent = (props) => {
       </div>
 
       {/* Main Content */}
-      <div class='relative z-0'>{props.children}</div>
+      <div class='relative z-0 m-5'>{props.children}</div>
     </div>
   );
 };

@@ -16,8 +16,8 @@ export default function Header(props: HeaderProps) {
 
   return (
     <div>
-      <header class='bg-white shadow-md dark:bg-gray-900 dark:text-white relative'>
-        <div class='container mx-auto grid gap-1 md:grid-cols-2 lg:grid-cols-4'>
+      <header class='bg-white shadow-md border-b border-gray-300 top-0 z-40'>
+        <div class='mx-auto grid md:grid-cols-2 lg:grid-cols-4'>
           {/* Logo and Mobile Menu Button */}
           <div class='order-1 col-span-1 lg:col-span-1 lg:order-1 flex items-center gap-1 justify-start relative'>
             <div class='px-4 py-2 flex items-center justify-between'>
@@ -28,7 +28,7 @@ export default function Header(props: HeaderProps) {
                 {/* Logo */}
                 <A
                   href='/'
-                  class='items-center text-xl font-bold text-primary hidden md:block'
+                  class='items-center text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'
                 >
                   SolidShop
                 </A>
@@ -37,10 +37,10 @@ export default function Header(props: HeaderProps) {
           </div>
 
           {/* Actions (Cart, Login/Logout) */}
-          <div class='order-1 col-span-1 lg:col-span-1 lg:order-3 flex items-center gap-6 justify-end relative z-10'>
+          <div class='order-2 col-span-1 lg:col-span-1 lg:order-3 flex items-center gap-6 justify-end relative z-10'>
             <A
               href='/store-locator'
-              class='text-gray-600 dark:text-gray-300 items-center gap-1 hidden md:block'
+              class='text-gray-600 dark:text-gray-900 flex items-center gap-1'
             >
               <span class='material-symbols-outlined flex-shrink-0'>
                 location_on
@@ -53,7 +53,7 @@ export default function Header(props: HeaderProps) {
               fallback={
                 <A
                   href='/login'
-                  class='text-gray-600 dark:text-gray-300 flex items-center gap-1'
+                  class='text-gray-600 dark:text-gray-900 flex items-center gap-1'
                 >
                   <span class='material-symbols-outlined flex-shrink-0'>
                     account_circle
@@ -64,7 +64,7 @@ export default function Header(props: HeaderProps) {
             >
               <button
                 type='button'
-                class='text-gray-600 dark:text-gray-300 flex items-center gap-1'
+                class='text-gray-600 dark:text-gray-900 flex items-center gap-1'
                 onClick={() => logout()}
               >
                 <span class='material-symbols-outlined flex-shrink-0'>
@@ -77,7 +77,7 @@ export default function Header(props: HeaderProps) {
             {/* Cart */}
             <A
               href='/cart'
-              class='relative text-gray-600 dark:text-gray-300 flex items-center gap-1 mr-4'
+              class='relative text-gray-600 dark:text-gray-900 flex items-center gap-1 mr-4'
             >
               <span class='relative flex items-center'>
                 <span class='material-symbols-outlined'>shopping_cart</span>
@@ -87,14 +87,14 @@ export default function Header(props: HeaderProps) {
                   </span>
                 )}
               </span>
-              <span class='hidden xl:inline'>Cart</span>
+              <span class='hidden lg:inline'>Cart</span>
             </A>
           </div>
 
           {/* Search Bar */}
 
-          <div class='order-3 col-span-2 lg:order-2 lg:col-span-2 relative z-30'>
-            <div class='bg-gray-100 dark:bg-gray-800 py-2 flex items-center justify-center'>
+          <div class='order-3 col-span-2 lg:col-span-2 lg:order-2 relative z-30'>
+            <div class=' py-2 flex items-center justify-center'>
               <SearchBar setIsFocused={props.setIsFocused} />
             </div>
           </div>
