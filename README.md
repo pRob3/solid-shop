@@ -5,7 +5,7 @@ We are using local storage to store the JWT tokens.
 
 ## How the app looks like
 
-Demo: [https://prob3.github.io/solid-shop/](GitHub Pages)
+Demo: [GitHub Pages](https://prob3.github.io/solid-shop/)
 
 ![App Screenshot](./screenshot.png)
 
